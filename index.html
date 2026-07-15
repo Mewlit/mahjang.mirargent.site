@@ -1,10 +1,426 @@
-<!DOCTYPE htmja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mira-c4t.github.io</title>
-</head>
-<body>
-    Hello わ～るど
-</body>
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>まったり雀魂雪 雀// 雀魂サークル公式</title>
+        <style>
+            /* ベーススタイル */
+            :root {
+                --bg-color: #0b0d10;
+                --surface-color: #16191f;
+                --primary-color: #00ffcc;
+                --text-color: #e2e8f0;
+                --text-muted: #94a3b8;
+                --accent-color: #00b3ff;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                font-family:
+                    "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+                    "Hiragino Sans", Meiryo, sans-serif;
+                line-height: 1.7;
+            }
+
+            a {
+                color: var(--primary-color);
+                text-decoration: none;
+                transition: opacity 0.2s;
+            }
+
+            a:hover {
+                opacity: 0.8;
+            }
+
+            .container {
+                max-width: 1000px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            /* ヘッダー・ナビゲーション */
+            header {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                position: sticky;
+                top: 0;
+                background-color: rgba(11, 13, 16, 0.9);
+                backdrop-filter: blur(10px);
+                z-index: 100;
+            }
+
+            .header-inner {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 70px;
+            }
+
+            .logo {
+                font-size: 24px;
+                font-weight: bold;
+                letter-spacing: 1px;
+            }
+
+            .logo span {
+                color: var(--primary-color);
+            }
+
+            nav ul {
+                display: flex;
+                list-style: none;
+                gap: 24px;
+            }
+
+            nav a {
+                color: var(--text-color);
+                font-weight: 600;
+                font-size: 14px;
+                letter-spacing: 1px;
+            }
+
+            nav a:hover {
+                color: var(--primary-color);
+            }
+
+            /* ヒーローセクション */
+            .hero {
+                padding: 100px 0 80px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+                letter-spacing: 2px;
+                margin-bottom: 16px;
+            }
+
+            .hero p {
+                font-size: 18px;
+                color: var(--text-muted);
+                font-style: italic;
+                margin-bottom: 40px;
+            }
+
+            .btn {
+                display: inline-block;
+                background-color: var(--primary-color);
+                color: #000;
+                padding: 14px 36px;
+                border-radius: 4px;
+                font-weight: bold;
+                letter-spacing: 1px;
+                box-shadow: 0 4px 20px rgba(0, 255, 204, 0.3);
+                transition:
+                    transform 0.2s,
+                    box-shadow 0.2s;
+            }
+
+            .btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 24px rgba(0, 255, 204, 0.5);
+                opacity: 1;
+            }
+
+            /* コンテンツセクション共通 */
+            section {
+                padding: 80px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .section-title {
+                font-size: 28px;
+                letter-spacing: 2px;
+                margin-bottom: 40px;
+                position: relative;
+                padding-left: 16px;
+            }
+
+            .section-title::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 4px;
+                bottom: 4px;
+                width: 4px;
+                background-color: var(--primary-color);
+            }
+
+            /* INTRODUCTION */
+            .intro-layout {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            @media (max-width: 768px) {
+                .intro-layout {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .intro-text p {
+                margin-bottom: 20px;
+                color: var(--text-muted);
+            }
+
+            .features-card {
+                background-color: var(--surface-color);
+                padding: 30px;
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.03);
+            }
+
+            .features-card h3 {
+                color: var(--primary-color);
+                margin-bottom: 20px;
+                font-size: 18px;
+            }
+
+            .features-card ul {
+                list-style: none;
+            }
+
+            .features-card li {
+                position: relative;
+                padding-left: 20px;
+                margin-bottom: 16px;
+            }
+
+            .features-card li::before {
+                content: "■";
+                position: absolute;
+                left: 0;
+                color: var(--text-muted);
+                font-size: 10px;
+                top: 2px;
+            }
+
+            /* NEWS (空白状態) */
+            .news-placeholder {
+                background-color: var(--surface-color);
+                border: 1px dashed rgba(255, 255, 255, 0.15);
+                padding: 40px;
+                border-radius: 8px;
+                text-align: center;
+                color: var(--text-muted);
+                font-style: italic;
+            }
+
+            /* RULE */
+            .rule-block {
+                margin-bottom: 40px;
+            }
+
+            .rule-block h3 {
+                font-size: 18px;
+                margin-bottom: 16px;
+                color: var(--accent-color);
+            }
+
+            .rule-list {
+                list-style: none;
+            }
+
+            .rule-list li {
+                position: relative;
+                padding-left: 20px;
+                margin-bottom: 12px;
+                color: var(--text-muted);
+            }
+
+            .rule-list li::before {
+                content: "・";
+                position: absolute;
+                left: 0;
+                color: var(--accent-color);
+                font-weight: bold;
+            }
+
+            /* JOIN */
+            .join-section {
+                text-align: center;
+                background: linear-gradient(
+                    180deg,
+                    var(--bg-color) 0%,
+                    var(--surface-color) 100%
+                );
+            }
+
+            .join-section p {
+                margin-bottom: 30px;
+                color: var(--text-muted);
+            }
+
+            .sns-links {
+                margin-top: 40px;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            /* フッター */
+            footer {
+                padding: 40px 0;
+                text-align: center;
+                color: var(--text-muted);
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ヘッダー・ナビゲーション -->
+        <header>
+            <div class="container header-inner">
+                <div class="logo">YUKI-<span>MAHJONG</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#top">TOP</a></li>
+                        <li><a href="#about">ABOUT</a></li>
+                        <li><a href="#news">NEWS</a></li>
+                        <li><a href="#rule">RULE</a></li>
+                        <li><a href="#join">JOIN</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- ヒーローセクション -->
+        <div class="hero" id="top">
+            <div class="container">
+                <h1>ONLINE MAHJONG COMMUNITY</h1>
+                <p>
+                    まったり雑談しながら対局しよう。画面の向こうの、最高の雀友と。
+                </p>
+                <a href="#join" class="btn">サークルに参加する（Discord）</a>
+            </div>
+        </div>
+
+        <!-- INTRODUCTION -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">INTRODUCTION</h2>
+                <div class="intro-layout">
+                    <div class="intro-text">
+                        <p>
+                            当コミュニティは、初心者〜中級者向けの<strong>雀魂麻雀サークル</strong>です。
+                        </p>
+                        <p>
+                            リアル麻雀の枠を超え、雀魂をプラットフォームに、初心者から中級者まで幅広い方が雑談しつつゆるくやっています。
+                        </p>
+                        <p>
+                            場所を選ばず、いつでもどこからでも、麻雀技術の向上やメンバー間の深い交流を楽しめる場所を目指しています。
+                        </p>
+                    </div>
+                    <div class="features-card">
+                        <h3>コミュニティの特色</h3>
+                        <ul>
+                            <li>
+                                <strong>自己紹介は必須です</strong
+                                ><br />賭博行為は一切禁止。オンラインだからこそ、お互いを尊重するクリーンな環境を徹底しています。
+                            </li>
+                            <li>
+                                <strong>座学</strong
+                                ><br />プラスワンというコーナーを設けておりそこで牌効率など学べます
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEWS -->
+        <section id="news">
+            <div class="container">
+                <h2 class="section-title">NEWS</h2>
+
+                <!-- ▽▽▽ ニュース追記時はここから編集してください ▽▽▽ -->
+                <div class="news-placeholder">
+                    現在、新しいお知らせはありません。次回のイベント告知や活動レポートをお待ちください！
+                </div>
+                <!-- △△△ ニュース追記時はここまでを変更してください △△△ -->
+            </div>
+        </section>
+
+        <!-- RULE -->
+        <section id="rule">
+            <div class="container">
+                <h2 class="section-title">COMMUNITY RULE</h2>
+
+                <div class="rule-block">
+                    <h3>基本対局ルール（オンライン仕様）</h3>
+                    <ul class="rule-list">
+                        <li><strong>採用プラットフォーム:</strong> 雀魂</li>
+                        <li>
+                            <strong>基本ルール:</strong>
+                            四人麻雀・東南戦（半荘戦）、25,000点持ち・30,000点返し
+                        </li>
+                        <li>
+                            <strong>詳細設定:</strong>
+                            喰いタンあり、後付けあり、赤五サマ各1枚（計3枚）、トビ終了あり（プラットフォームの標準設定に準拠）
+                        </li>
+                        <li>
+                            <strong>時間制限:</strong>
+                            オンラインの打牌思考タイマーに準拠（長考のしすぎにはご注意ください）
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="rule-block">
+                    <h3>オンラインマナー・ガイドライン</h3>
+                    <ul class="rule-list">
+                        <li>
+                            <strong
+                                >チャット・ボイスチャット（VC）での礼儀:</strong
+                            >
+                            対局前後の「よろしくお願いします」「ありがとうございました」の挨拶を大切に。
+                        </li>
+                        <li>
+                            <strong>他者への批判・過度な煽りの絶対禁止:</strong>
+                            打牌批判、説教、スタンプの連打など、同卓者が不快になる行為はお辞めください。
+                        </li>
+                        <li>
+                            <strong>回線落ち・トラブル時の対応:</strong>
+                            万が一の回線落ちの際は、焦らずDiscord等で一言共有をお願いします。不慮のトラブルを責める雰囲気は作らないのがモットーです。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOIN -->
+        <section id="join" class="join-section">
+            <div class="container">
+                <h2
+                    class="section-title"
+                    style="
+                        display: inline-block;
+                        padding-left: 16px;
+                        text-align: left;
+                    "
+                >
+                    WANT TO JOIN?
+                </h2>
+                <p style="margin-top: 20px">
+                    活動はすべて<strong>Discordサーバー</strong>を中心に行っています。プレイスタイルや段位は問いません。<br />麻雀をオンラインで熱く、楽しく打ちたい方のご参加をお待ちしています！
+                </p>
+                <a href="#" class="btn">Discordサーバーに参加する（無料）</a>
+            </div>
+        </section>
+
+        <!-- フッター -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2026 MJ-COMMUNITY. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </body>
 </html>
