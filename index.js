@@ -3,7 +3,6 @@ const BASIC_PASS = 'yukky'
 
 export default {
   async fetch(request, env, ctx) {
-    // 1. Authorization ヘンダーのチェック
     if (request.headers.has("Authorization")) {
       const Authorization = request.headers.get('Authorization')
       const [scheme, encoded] = Authorization.split(' ')
@@ -23,7 +22,6 @@ export default {
       const user = decoded.substring(0, index);
       const pass = decoded.substring(index + 1);
 
-      // 認証成功時：静的アセット（index.html など）の取得処理へパスする
       if (BASIC_USER === user && BASIC_PASS === pass) {
         return env.ASSETS.fetch(request)
       }
@@ -31,7 +29,6 @@ export default {
       return new Response('Invalid credentials.', { status: 401 })
     }
 
-    // 未認証時のレスポンス
     return new Response('You need to login.', {
       status: 401,
       headers: {
